@@ -32,7 +32,9 @@ test("can add todos to the list", async () => {
 
   await EnterNewTodo("Hello world!", "Remove me later", "Some second todo");
 
-  const removeMeElement = await screen.findByText("Remove me later");
+  const removeMeElement = await waitFor(() =>
+    screen.getByText("Remove me later")
+  );
 
   expect(removeMeElement).toBeInTheDocument();
 });
