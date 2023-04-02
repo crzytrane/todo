@@ -6,7 +6,6 @@ import styled from "styled-components";
 const StyledContainer = styled.div`
   background-color: white;
   filter: drop-shadow(2px 4px 2px rgb(0 0 0 / 25%));
-  border-radius: 4px;
   padding: 1rem;
   display: flex;
   gap: 1rem;
