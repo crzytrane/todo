@@ -79,7 +79,7 @@ const NewTodo: React.FC = () => {
         <StyledInput
           type="text"
           ref={inputRef}
-          placeholder="Do the dishes"
+          placeholder="Take out the trash"
           data-testid="NewTodo-text-input"
           onChange={HandleChangeWithDebounce}
         />
