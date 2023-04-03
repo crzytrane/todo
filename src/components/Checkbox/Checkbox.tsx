@@ -10,8 +10,10 @@ type Props = {
 };
 
 const CheckboxOuter = styled.div<{ size: Size }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
+  min-width: ${(props) => props.size};
+  max-width: ${(props) => props.size};
+  min-height: ${(props) => props.size};
+  max-height: ${(props) => props.size};
   background-color: #e7e7e7;
   border: #c3c2c2 solid 1px;
   filter: drop-shadow(2px 2px 1px #e7e7e7);

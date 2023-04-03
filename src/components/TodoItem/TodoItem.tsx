@@ -28,12 +28,13 @@ const StyledRemoveButton = styled.button`
   }
 `;
 
-const StyledText = styled.div`
+const StyledText = styled.div<{ completed: boolean }>`
   flex-grow: 1;
+  ${(props) => props.completed && "text-decoration: line-through"};
 `;
 
 type Props = {
-  todo: Id<Todo>;
+  todo: Id<TodoEntity>;
 };
 
 const TodoItem: React.FC<Props> = ({ todo }) => {
@@ -42,10 +43,22 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
     dispatch({ type: "RemoveTodo", todo });
   };
 
+  const markCompleted = () => {
+    dispatch({ type: "MarkAsCompleted", todo });
+  };
+
+  const markIncomplete = () => {
+    dispatch({ type: "MarkAsIncomplete", todo });
+  };
+
+  const CheckboxClickHandler = todo.completed ? markIncomplete : markCompleted;
+
   return (
     <StyledTodoItemContainer>
-      <Checkbox selected={false} handleClick={() => {}} />
-      <StyledText key={todo.id}>{todo.text}</StyledText>
+      <Checkbox selected={todo.completed} handleClick={CheckboxClickHandler} />
+      <StyledText key={todo.id} completed={todo.completed}>
+        {todo.text}
+      </StyledText>
       <StyledRemoveButton
         data-testid="TodoItem-remove-button"
         onClick={RemoveHandler}

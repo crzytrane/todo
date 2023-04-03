@@ -6,7 +6,7 @@ import TodoItem from "./TodoItem";
 test("renders todo item with delete button", async () => {
   const state: TodoReducerState = {
     counter: 2,
-    todos: [{ id: 1, text: "Hello world!" }],
+    todos: [{ id: 1, text: "Hello world!", completed: false }],
     newTodo: {
       text: "",
       showError: false,

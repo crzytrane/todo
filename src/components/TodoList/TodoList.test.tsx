@@ -6,8 +6,8 @@ test("renders todo item with delete button", async () => {
   const state: TodoReducerState = {
     counter: 3,
     todos: [
-      { id: 1, text: "Hello world!" },
-      { id: 2, text: "Second todo item" },
+      { id: 1, text: "Hello world!", completed: false },
+      { id: 2, text: "Second todo item", completed: false },
     ],
     newTodo: {
       text: "",

@@ -3,6 +3,11 @@ import TodoList from "./components/TodoList/TodoList";
 import NewTodo from "./components/NewTodo/NewTodo";
 import { TodoContext } from "./contexts/TodoContext";
 import { TodoReducer } from "./reducers/TodoReducer";
+import styled from "styled-components";
+
+const StyledAppContainer = styled.div`
+  min-width: 180px;
+`;
 
 function App() {
   const [state, dispatchEvent] = useReducer<TodoReducer>(TodoReducer, {
@@ -16,13 +21,13 @@ function App() {
 
   return (
     <TodoContext.Provider value={[state, dispatchEvent]}>
-      <div>
+      <StyledAppContainer>
         <header></header>
         <main>
           <NewTodo />
           <TodoList />
         </main>
-      </div>
+      </StyledAppContainer>
     </TodoContext.Provider>
   );
 }

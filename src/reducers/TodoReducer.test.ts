@@ -56,7 +56,7 @@ describe("TodoReducer", () => {
     test("can remove an item", () => {
       const state: TodoReducerState = {
         counter: 2,
-        todos: [{ id: 1, text: "Hello World!" }],
+        todos: [{ id: 1, text: "Hello World!", completed: false }],
         newTodo: {
           text: "",
           showError: false,
@@ -74,7 +74,7 @@ describe("TodoReducer", () => {
     test("wrong id doesn't remove anything", () => {
       const state: TodoReducerState = {
         counter: 2,
-        todos: [{ id: 1, text: "Hello World!" }],
+        todos: [{ id: 1, text: "Hello World!", completed: false }],
         newTodo: {
           text: "",
           showError: false,

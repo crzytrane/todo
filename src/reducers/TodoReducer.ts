@@ -1,3 +1,5 @@
+import { ReducerState } from "react";
+
 export const isValidTodo = (todo: Todo) => todo.text.toString().length > 0;
 
 export const TodoReducer: TodoReducer = (
@@ -8,7 +10,11 @@ export const TodoReducer: TodoReducer = (
     case "AddTodo":
       if (isValidTodo(action.todo)) {
         if (action.ref.current) action.ref.current.value = "";
-        const todo = { ...action.todo, id: state.counter };
+        const todo: TodoEntity = {
+          ...action.todo,
+          id: state.counter,
+          completed: false,
+        };
         const newState: TodoReducerState = {
           ...state,
           todos: [...state.todos, todo],
@@ -39,6 +45,22 @@ export const TodoReducer: TodoReducer = (
         },
       };
       return newTodoInputUpdatedState;
+    case "MarkAsCompleted":
+      const markAsCompletedState: TodoReducerState = {
+        ...state,
+        todos: state.todos.map((t) =>
+          t.id === action.todo.id ? { ...t, completed: true } : t
+        ),
+      };
+      return markAsCompletedState;
+    case "MarkAsIncomplete":
+      const markAsIncompleteState: TodoReducerState = {
+        ...state,
+        todos: state.todos.map((t) =>
+          t.id === action.todo.id ? { ...t, completed: false } : t
+        ),
+      };
+      return markAsIncompleteState;
     default:
       return state;
   }

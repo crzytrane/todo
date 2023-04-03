@@ -2,7 +2,7 @@ type Id<T = {}, I = number> = T & { id: I };
 type Todo = {
   text: string;
 };
-type TodoEntity = Id<Todo>;
+type TodoEntity = Id<Todo> & { completed: boolean };
 
 type TodoReducerState = {
   newTodo: {
@@ -13,11 +13,19 @@ type TodoReducerState = {
   counter: number;
 };
 
-type TodoReducerEventType = "AddTodo" | "RemoveTodo" | "NewTodoInputUpdated";
+type TodoReducerEventType =
+  | "AddTodo"
+  | "RemoveTodo"
+  | "NewTodoInputUpdated"
+  | "MarkAsCompleted"
+  | "MarkAsIncomplete";
 
 type TodoReducerAction =
   | {
-      type: Extract<TodoReducerEventType, "RemoveTodo">;
+      type: Extract<
+        TodoReducerEventType,
+        "RemoveTodo" | "MarkAsCompleted" | "MarkAsIncomplete"
+      >;
       todo: Id;
     }
   | {
