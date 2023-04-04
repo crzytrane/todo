@@ -7,6 +7,26 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      // .register(new URL("./service-worker", import.meta.url))
+      .register("/service-worker.js")
+      .then(
+        function (registration) {
+          console.log(
+            "Service Worker registration successful with scope: ",
+            registration.scope
+          );
+        },
+        function (err) {
+          console.log("Service Worker registration failed: ", err);
+        }
+      );
+  });
+}
+
 root.render(
   <React.StrictMode>
     <App />
