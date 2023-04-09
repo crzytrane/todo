@@ -1,5 +1,3 @@
-import { ReducerState } from "react";
-
 export const isValidTodo = (todo: Todo) => todo.text.toString().length > 0;
 
 export const TodoReducer: TodoReducer = (

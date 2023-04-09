@@ -43,3 +43,5 @@ type TodoReducer = (
   state: TodoReducerState,
   action: TodoReducerAction
 ) => TodoReducerState;
+
+type Size = `${number}rem` | `${number}px`;
