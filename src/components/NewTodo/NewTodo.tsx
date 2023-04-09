@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { TodoContext } from "../../contexts/TodoContext";
 import {
   StyledButton,
@@ -14,7 +14,9 @@ const NewTodo: React.FC = () => {
   const [, dispatch] = useContext(TodoContext);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const HandleChangeWithDebounce = () => {
+  const HandleChangeWithDebounce: React.ChangeEventHandler<
+    HTMLInputElement
+  > = () => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       const inputText = inputRef.current?.value ?? "";
@@ -25,6 +27,18 @@ const NewTodo: React.FC = () => {
       });
     }, 500);
   };
+
+  const HandleKeydown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === "Enter") {
+      const inputText = inputRef.current?.value ?? "";
+      dispatch({
+        type: "AddTodo",
+        todo: { text: inputText },
+        ref: inputRef,
+      });
+    }
+  };
+
   return (
     <StyledNewTodoContainer>
       <StyledHeader>New todo</StyledHeader>
@@ -35,6 +49,7 @@ const NewTodo: React.FC = () => {
           placeholder="Take out the trash"
           data-testid="NewTodo-text-input"
           onChange={HandleChangeWithDebounce}
+          onKeyDown={HandleKeydown}
         />
         <StyledButton
           data-testid="NewTodo-create-button"
