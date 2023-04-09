@@ -1,9 +1,9 @@
 import { useReducer } from "react";
-import TodoList from "./components/TodoList/TodoList";
+import styled from "styled-components";
 import NewTodo from "./components/NewTodo/NewTodo";
+import TodoList from "./components/TodoList/TodoList";
 import { TodoContext } from "./contexts/TodoContext";
 import { TodoReducer } from "./reducers/TodoReducer";
-import styled from "styled-components";
 
 const StyledAppContainer = styled.div`
   min-width: 180px;
