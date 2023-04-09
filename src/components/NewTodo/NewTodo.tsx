@@ -3,6 +3,7 @@ import { TodoContext } from "../../contexts/TodoContext";
 import styled from "styled-components";
 
 const StyledNewTodoContainer = styled.div`
+  filter: drop-shadow(2px 4px 2px rgb(0 0 0 / 25%));
   margin: 0 auto;
   background-color: var(--majorelle-blue);
   padding: 1rem;
