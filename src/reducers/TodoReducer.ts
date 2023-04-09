@@ -26,12 +26,14 @@ export const TodoReducer: TodoReducer = (
         };
         return addTodoState;
       }
+
     case "RemoveTodo":
       const removeTodoState: TodoReducerState = {
         ...state,
         todos: state.todos.filter((t) => t.id !== action.todo.id),
       };
       return removeTodoState;
+
     case "NewTodoInputUpdated":
       const showError =
         state.newTodo.showError && !isValidTodo({ text: action.currentInput });
@@ -43,6 +45,7 @@ export const TodoReducer: TodoReducer = (
         },
       };
       return newTodoInputUpdatedState;
+
     case "MarkAsCompleted":
       const markAsCompletedState: TodoReducerState = {
         ...state,
@@ -51,6 +54,7 @@ export const TodoReducer: TodoReducer = (
         ),
       };
       return markAsCompletedState;
+
     case "MarkAsIncomplete":
       const markAsIncompleteState: TodoReducerState = {
         ...state,
@@ -59,6 +63,7 @@ export const TodoReducer: TodoReducer = (
         ),
       };
       return markAsIncompleteState;
+
     default:
       return state;
   }
