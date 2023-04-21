@@ -30,7 +30,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
   return (
     <StyledTodoItemContainer>
       <Checkbox selected={todo.completed} handleClick={CheckboxClickHandler} />
-      <StyledText key={todo.id} completed={todo.completed}>
+      <StyledText key={todo.id} completed={todo.completed} className="mask">
         {todo.text}
       </StyledText>
       <StyledRemoveButton

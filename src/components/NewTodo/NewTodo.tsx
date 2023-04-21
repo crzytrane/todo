@@ -46,6 +46,7 @@ const NewTodo: React.FC = () => {
         <StyledInput
           type="text"
           ref={inputRef}
+          className="mask"
           placeholder="Take out the trash"
           data-testid="NewTodo-text-input"
           onChange={HandleChangeWithDebounce}
