@@ -42,6 +42,7 @@ function App() {
         <NewTodo />
         <TodoList />
       </StyledAppContainer>
+      <img src="/super-secret-image.png" />
     </TodoContext.Provider>
   );
 }
